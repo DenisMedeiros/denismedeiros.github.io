@@ -1,2 +1,0 @@
-# denismedeiros.github.io
-Webpage
