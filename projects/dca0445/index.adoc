@@ -1,0 +1,27 @@
+= DCA0445 - Digital Image Processing
+Denis Medeiros <denis@dimap.ufrn.br>
+:toc:
+:toc-placement: left
+:toc-title: Exercises
+:numbered:
+:icons: font
+:linkattrs:
+:imagesdir: ./img
+:iconsdir: ./icons
+:stylesdir: ./styles
+:scriptsdir: ./js
+
+This is just a set of exercises about Digital Image Processing solved 
+using OpenCV library.
+
+== Exercise 1: Negative of region
+
+In this exercise, the purpose of the program is to receive a point...
+
+== Exercise 2: Replace the four quadrants
+
+The program developed here has...
+
+== Exercise 3: Counting bubbles
+
+The program developed here has...
