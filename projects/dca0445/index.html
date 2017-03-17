@@ -503,8 +503,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel1">
 <li><a href="#_manipulando_pixels_em_uma_imagem">1. Manipulando pixels em uma imagem</a>
 <ul class="sectlevel2">
-<li><a href="#_exercício_1">1.1. Exercício 1</a></li>
-<li><a href="#_exercício_2">1.2. Exercício 2</a></li>
+<li><a href="#_seção_3_2_exercício_1">1.1. Seção 3.2 - Exercício 1</a></li>
+<li><a href="#_seção_3_2_exercício_2">1.2. Seção 3.2 - Exercício 2</a></li>
+</ul>
+</li>
+<li><a href="#_preenchendo_regiões">2. Preenchendo regiões</a>
+<ul class="sectlevel2">
+<li><a href="#_exercício_1">2.1. Exercício 1</a></li>
 </ul>
 </li>
 </ul>
@@ -514,46 +519,33 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Esta página contém uma série de exercícios sobre processamento digital de imagens implementados em C++ com a biblioteca OpenCV.</p>
+<p>Esta página contém uma série de exercícios sobre processamento digital de imagens implementados em C++ com a biblioteca OpenCV. Todos eles, bem como os textos introdutórios são de crédito do professor Dr. <a href="http://agostinhobritojr.github.io/" target="_blank">Agostinho de Medeiros Brito Junior</a>, professor da Universidade Federal do Rio Grande do Norte e responsável pelo curso <a href="http://agostinhobritojr.github.io/tutoriais/pdi/" target="_blank">DCA0445 - Processamento Digital de Imagens</a>.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_manipulando_pixels_em_uma_imagem">1. Manipulando pixels em uma imagem</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>O objetivo dessa lição é mostra como manipular os pixels de uma imagem, mudando a cor de uma pequena região retangular de uma imagem fornecida para processamento.</p>
-</div>
 <div class="sect2">
-<h3 id="_exercício_1">1.1. Exercício 1</h3>
+<h3 id="_seção_3_2_exercício_1">1.1. Seção 3.2 - Exercício 1</h3>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p>Utilizando o programa exemplos/pixels.cpp como referência, implemente um
-programa regions.cpp. Esse programa deverá solicitar ao usuário as coordenadas
-de dois pontos \$P_1\$ e \$P_2\$  localizados dentro dos limites do
-tamanho da imagem e exibir que lhe for fornecida. Entretanto, a região definida
-pelo retângulo de vértices opostos definidos pelos pontos \$P_1\$ e
-\$P_2\$ será exibida com o negativo da imagem na região correspondente.
-O efeito é ilustrado na figura regiões (abaixo).</p>
+<p>Utilizando o programa <a href="http://agostinhobritojr.github.io/tutoriais/pdi/exemplos/pixels.cpp" target="_blank">exemplos/pixels.cpp</a> como referência, implemente um  programa regions.cpp. Esse programa deverá solicitar ao usuário as coordenadas  de dois pontos \$P_1\$ e \$P_2\$  localizados dentro dos limites do  tamanho da imagem e exibir que lhe for fornecida. Entretanto, a região definida  pelo retângulo de vértices opostos definidos pelos pontos \$P_1\$ e \$P_2\$ será exibida com o negativo da imagem na região correspondente.</p>
+</div>
+<div class="paragraph">
+<p>O efeito é ilustrado na figura regiões (abaixo).</p>
 </div>
 <div id="img-regioes" class="imageblock">
 <div class="content">
 <img src="./img/regioes.png" alt="Regiões" width="200" height="200">
 </div>
-<div class="title">Figure 1. Figura regioes.png</div>
+<div class="title">Figura 1. Figura regioes.png</div>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>Para resolver o exercício acima, o seguinte programa foi resenvolvido.</p>
-</div>
-<div class="paragraph">
-<p>
-<details>
- <summary> regions.cpp </summary>
- <div>
-</p>
+<p>Para resolver o exercício acima, o seguinte programa foi desenvolvido:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -633,7 +625,18 @@ O efeito é ilustrado na figura regiões (abaixo).</p>
 74
 75
 76
-77</div></td><td class="code"><span></span><span class="tok-cp">#include</span> <span class="tok-cpf">&lt;iostream&gt;</span><span class="tok-cp"></span>
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88</div></td><td class="code"><span></span><span class="tok-cp">#include</span> <span class="tok-cpf">&lt;iostream&gt;</span><span class="tok-cp"></span>
 <span class="tok-cp">#include</span> <span class="tok-cpf">&lt;opencv2/opencv.hpp&gt;</span><span class="tok-cp"></span>
 
 <span class="tok-k">using</span> <span class="tok-k">namespace</span> <span class="tok-n">cv</span><span class="tok-p">;</span>
@@ -649,9 +652,10 @@ O efeito é ilustrado na figura regiões (abaixo).</p>
 
 <span class="tok-kt">int</span> <span class="tok-nf">main</span><span class="tok-p">(</span><span class="tok-kt">int</span> <span class="tok-n">argc</span><span class="tok-p">,</span> <span class="tok-kt">char</span><span class="tok-o">**</span> <span class="tok-n">argv</span><span class="tok-p">)</span>
 <span class="tok-p">{</span>
-    <span class="tok-n">Mat</span> <span class="tok-n">image</span><span class="tok-p">;</span>
+    <span class="tok-n">Mat</span> <span class="tok-n">imagem</span><span class="tok-p">;</span>
+    <span class="tok-n">Vec3b</span> <span class="tok-n">atual</span><span class="tok-p">,</span> <span class="tok-n">novo</span><span class="tok-p">;</span>
     <span class="tok-n">Point</span> <span class="tok-n">p1</span><span class="tok-p">,</span> <span class="tok-n">p2</span><span class="tok-p">;</span>
-    <span class="tok-n">Rect</span> <span class="tok-n">rec</span><span class="tok-p">;</span>
+    <span class="tok-n">Rect</span> <span class="tok-n">ret</span><span class="tok-p">;</span>
 
     <span class="tok-c1">// Verifica a quantidade de argumentos.</span>
     <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-n">argc</span> <span class="tok-o">!=</span> <span class="tok-mi">6</span><span class="tok-p">)</span>
@@ -661,15 +665,15 @@ O efeito é ilustrado na figura regiões (abaixo).</p>
         <span class="tok-k">return</span> <span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">;</span>
     <span class="tok-p">}</span>
 
-    <span class="tok-c1">// Check if the image can be loaded.</span>
-    <span class="tok-n">image</span> <span class="tok-o">=</span> <span class="tok-n">imread</span><span class="tok-p">(</span><span class="tok-n">argv</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">],</span> <span class="tok-n">CV_LOAD_IMAGE_GRAYSCALE</span><span class="tok-p">);</span>
-    <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-o">!</span><span class="tok-n">image</span><span class="tok-p">.</span><span class="tok-n">data</span><span class="tok-p">)</span>
+    <span class="tok-c1">// Verifica se a imagem pode ser aberta.</span>
+    <span class="tok-n">imagem</span> <span class="tok-o">=</span> <span class="tok-n">imread</span><span class="tok-p">(</span><span class="tok-n">argv</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">],</span> <span class="tok-n">CV_LOAD_IMAGE_COLOR</span><span class="tok-p">);</span>
+    <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-o">!</span><span class="tok-n">imagem</span><span class="tok-p">.</span><span class="tok-n">data</span><span class="tok-p">)</span>
     <span class="tok-p">{</span>
-        <span class="tok-n">cout</span> <span class="tok-o">&lt;&lt;</span> <span class="tok-s">&quot;The image could not be loaded!&quot;</span> <span class="tok-o">&lt;&lt;</span> <span class="tok-n">endl</span><span class="tok-p">;</span>
+        <span class="tok-n">cout</span> <span class="tok-o">&lt;&lt;</span> <span class="tok-s">&quot;A imagem não pode ser aberta.&quot;</span> <span class="tok-o">&lt;&lt;</span> <span class="tok-n">endl</span><span class="tok-p">;</span>
         <span class="tok-k">return</span> <span class="tok-o">-</span><span class="tok-mi">2</span><span class="tok-p">;</span>
     <span class="tok-p">}</span>
 
-    <span class="tok-c1">// Check if the points coordinates are valid numbers.</span>
+    <span class="tok-c1">// Verifica se todas as coordenadas fornecidas são números.</span>
     <span class="tok-k">try</span>
     <span class="tok-p">{</span>
         <span class="tok-n">p1</span><span class="tok-p">.</span><span class="tok-n">x</span> <span class="tok-o">=</span> <span class="tok-n">stoi</span><span class="tok-p">(</span><span class="tok-n">argv</span><span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">]);</span>
@@ -679,34 +683,44 @@ O efeito é ilustrado na figura regiões (abaixo).</p>
     <span class="tok-p">}</span>
     <span class="tok-k">catch</span> <span class="tok-p">(</span><span class="tok-k">const</span> <span class="tok-n">std</span><span class="tok-o">::</span><span class="tok-n">exception</span><span class="tok-o">&amp;</span> <span class="tok-n">e</span><span class="tok-p">)</span>
     <span class="tok-p">{</span>
-        <span class="tok-n">cout</span> <span class="tok-o">&lt;&lt;</span> <span class="tok-s">&quot;There is a problem with the points.&quot;</span> <span class="tok-o">&lt;&lt;</span> <span class="tok-n">endl</span><span class="tok-p">;</span>
+        <span class="tok-n">cout</span> <span class="tok-o">&lt;&lt;</span> <span class="tok-s">&quot;Uma ou mais coordenadas não é válida.&quot;</span> <span class="tok-o">&lt;&lt;</span> <span class="tok-n">endl</span><span class="tok-p">;</span>
         <span class="tok-k">return</span> <span class="tok-o">-</span><span class="tok-mi">3</span><span class="tok-p">;</span>
     <span class="tok-p">}</span>
 
-    <span class="tok-c1">// Check if the points are valid (if they are inside the image).</span>
-    <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-n">p1</span><span class="tok-p">.</span><span class="tok-n">x</span> <span class="tok-o">&gt;</span> <span class="tok-n">image</span><span class="tok-p">.</span><span class="tok-n">rows</span> <span class="tok-o">||</span> <span class="tok-n">p1</span><span class="tok-p">.</span><span class="tok-n">y</span> <span class="tok-o">&gt;</span> <span class="tok-n">image</span><span class="tok-p">.</span><span class="tok-n">cols</span><span class="tok-p">)</span>
+    <span class="tok-c1">// Vericfica os pontos estão dentro da imagem.</span>
+    <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-n">p1</span><span class="tok-p">.</span><span class="tok-n">x</span> <span class="tok-o">&gt;</span> <span class="tok-n">imagem</span><span class="tok-p">.</span><span class="tok-n">rows</span> <span class="tok-o">||</span> <span class="tok-n">p1</span><span class="tok-p">.</span><span class="tok-n">y</span> <span class="tok-o">&gt;</span> <span class="tok-n">imagem</span><span class="tok-p">.</span><span class="tok-n">cols</span><span class="tok-p">)</span>
     <span class="tok-p">{</span>
-        <span class="tok-n">cout</span> <span class="tok-o">&lt;&lt;</span> <span class="tok-s">&quot;Point 1 is out of bounds.&quot;</span><span class="tok-p">;</span>
+        <span class="tok-n">cout</span> <span class="tok-o">&lt;&lt;</span> <span class="tok-s">&quot;Ponto 1 está fora da imagem.&quot;</span><span class="tok-p">;</span>
         <span class="tok-k">return</span> <span class="tok-o">-</span><span class="tok-mi">4</span><span class="tok-p">;</span>
     <span class="tok-p">}</span>
-    <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-n">p2</span><span class="tok-p">.</span><span class="tok-n">x</span> <span class="tok-o">&gt;</span> <span class="tok-n">image</span><span class="tok-p">.</span><span class="tok-n">rows</span> <span class="tok-o">||</span> <span class="tok-n">p2</span><span class="tok-p">.</span><span class="tok-n">y</span> <span class="tok-o">&gt;</span> <span class="tok-n">image</span><span class="tok-p">.</span><span class="tok-n">cols</span><span class="tok-p">)</span>
+    <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-n">p2</span><span class="tok-p">.</span><span class="tok-n">x</span> <span class="tok-o">&gt;</span> <span class="tok-n">imagem</span><span class="tok-p">.</span><span class="tok-n">rows</span> <span class="tok-o">||</span> <span class="tok-n">p2</span><span class="tok-p">.</span><span class="tok-n">y</span> <span class="tok-o">&gt;</span> <span class="tok-n">imagem</span><span class="tok-p">.</span><span class="tok-n">cols</span><span class="tok-p">)</span>
     <span class="tok-p">{</span>
-        <span class="tok-n">cout</span> <span class="tok-o">&lt;&lt;</span> <span class="tok-s">&quot;Point 2 is out of bounds.&quot;</span><span class="tok-p">;</span>
+        <span class="tok-n">cout</span> <span class="tok-o">&lt;&lt;</span> <span class="tok-s">&quot;Ponto 2 está fora da imagem..&quot;</span><span class="tok-p">;</span>
         <span class="tok-k">return</span> <span class="tok-o">-</span><span class="tok-mi">4</span><span class="tok-p">;</span>
     <span class="tok-p">}</span>
 
-    <span class="tok-c1">// Calculate the negative for the specified region.</span>
-    <span class="tok-n">rec</span> <span class="tok-o">=</span> <span class="tok-n">Rect</span><span class="tok-p">(</span><span class="tok-n">p1</span><span class="tok-p">,</span> <span class="tok-n">p2</span><span class="tok-p">);</span>
-    <span class="tok-k">for</span> <span class="tok-p">(</span><span class="tok-kt">int</span> <span class="tok-n">i</span> <span class="tok-o">=</span> <span class="tok-n">rec</span><span class="tok-p">.</span><span class="tok-n">x</span><span class="tok-p">;</span> <span class="tok-n">i</span> <span class="tok-o">&lt;</span> <span class="tok-n">rec</span><span class="tok-p">.</span><span class="tok-n">height</span><span class="tok-p">;</span> <span class="tok-n">i</span><span class="tok-o">++</span><span class="tok-p">)</span>
+    <span class="tok-n">ret</span> <span class="tok-o">=</span> <span class="tok-n">Rect</span><span class="tok-p">(</span><span class="tok-n">p1</span><span class="tok-p">,</span> <span class="tok-n">p2</span><span class="tok-p">);</span>
+    <span class="tok-c1">// Calcula o negativo da região retangular formada pelos dois pontos.</span>
+    <span class="tok-k">for</span> <span class="tok-p">(</span><span class="tok-kt">int</span> <span class="tok-n">i</span> <span class="tok-o">=</span> <span class="tok-n">ret</span><span class="tok-p">.</span><span class="tok-n">x</span><span class="tok-p">;</span> <span class="tok-n">i</span> <span class="tok-o">&lt;</span> <span class="tok-n">ret</span><span class="tok-p">.</span><span class="tok-n">height</span><span class="tok-p">;</span> <span class="tok-n">i</span><span class="tok-o">++</span><span class="tok-p">)</span>
     <span class="tok-p">{</span>
-        <span class="tok-k">for</span> <span class="tok-p">(</span><span class="tok-kt">int</span> <span class="tok-n">j</span> <span class="tok-o">=</span> <span class="tok-n">rec</span><span class="tok-p">.</span><span class="tok-n">y</span><span class="tok-p">;</span> <span class="tok-n">j</span> <span class="tok-o">&lt;</span> <span class="tok-n">rec</span><span class="tok-p">.</span><span class="tok-n">width</span><span class="tok-p">;</span> <span class="tok-n">j</span><span class="tok-o">++</span><span class="tok-p">)</span>
+        <span class="tok-k">for</span> <span class="tok-p">(</span><span class="tok-kt">int</span> <span class="tok-n">j</span> <span class="tok-o">=</span> <span class="tok-n">ret</span><span class="tok-p">.</span><span class="tok-n">y</span><span class="tok-p">;</span> <span class="tok-n">j</span> <span class="tok-o">&lt;</span> <span class="tok-n">ret</span><span class="tok-p">.</span><span class="tok-n">width</span><span class="tok-p">;</span> <span class="tok-n">j</span><span class="tok-o">++</span><span class="tok-p">)</span>
         <span class="tok-p">{</span>
-            <span class="tok-n">image</span><span class="tok-p">.</span><span class="tok-n">at</span><span class="tok-o">&lt;</span><span class="tok-n">uchar</span><span class="tok-o">&gt;</span><span class="tok-p">(</span><span class="tok-n">i</span><span class="tok-p">,</span><span class="tok-n">j</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-mi">255</span> <span class="tok-o">-</span> <span class="tok-n">image</span><span class="tok-p">.</span><span class="tok-n">at</span><span class="tok-o">&lt;</span><span class="tok-n">uchar</span><span class="tok-o">&gt;</span><span class="tok-p">(</span><span class="tok-n">i</span><span class="tok-p">,</span><span class="tok-n">j</span><span class="tok-p">);</span>
+
+            <span class="tok-n">atual</span> <span class="tok-o">=</span> <span class="tok-n">imagem</span><span class="tok-p">.</span><span class="tok-n">at</span><span class="tok-o">&lt;</span><span class="tok-n">Vec3b</span><span class="tok-o">&gt;</span><span class="tok-p">(</span><span class="tok-n">i</span><span class="tok-p">,</span> <span class="tok-n">j</span><span class="tok-p">);</span>
+
+            <span class="tok-n">novo</span><span class="tok-p">[</span><span class="tok-mi">0</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-mi">255</span> <span class="tok-o">-</span> <span class="tok-n">atual</span><span class="tok-p">.</span><span class="tok-n">val</span><span class="tok-p">[</span><span class="tok-mi">0</span><span class="tok-p">];</span>   <span class="tok-c1">//B</span>
+            <span class="tok-n">novo</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-mi">255</span> <span class="tok-o">-</span> <span class="tok-n">atual</span><span class="tok-p">.</span><span class="tok-n">val</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">];</span>   <span class="tok-c1">//G</span>
+            <span class="tok-n">novo</span><span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-mi">255</span> <span class="tok-o">-</span> <span class="tok-n">atual</span><span class="tok-p">.</span><span class="tok-n">val</span><span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">];</span> <span class="tok-c1">//R</span>
+
+            <span class="tok-n">imagem</span><span class="tok-p">.</span><span class="tok-n">at</span><span class="tok-o">&lt;</span><span class="tok-n">Vec3b</span><span class="tok-o">&gt;</span><span class="tok-p">(</span><span class="tok-n">i</span><span class="tok-p">,</span> <span class="tok-n">j</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-n">novo</span><span class="tok-p">;</span>
+
         <span class="tok-p">}</span>
     <span class="tok-p">}</span>
 
-    <span class="tok-n">imshow</span><span class="tok-p">(</span><span class="tok-s">&quot;result&quot;</span><span class="tok-p">,</span> <span class="tok-n">image</span><span class="tok-p">);</span>
+    <span class="tok-n">imwrite</span><span class="tok-p">(</span><span class="tok-s">&quot;saida.png&quot;</span><span class="tok-p">,</span> <span class="tok-n">imagem</span><span class="tok-p">);</span>
+    <span class="tok-n">imshow</span><span class="tok-p">(</span><span class="tok-s">&quot;result&quot;</span><span class="tok-p">,</span> <span class="tok-n">imagem</span><span class="tok-p">);</span>
     <span class="tok-n">waitKey</span><span class="tok-p">(</span><span class="tok-mi">10000</span><span class="tok-p">);</span>
+
 
     <span class="tok-k">return</span> <span class="tok-mi">0</span><span class="tok-p">;</span>
 <span class="tok-p">}</span>
@@ -714,42 +728,29 @@ O efeito é ilustrado na figura regiões (abaixo).</p>
 </div>
 </div>
 <div class="paragraph">
-<p>
- </div>
-</details>
-</p>
+<p>A estratégia adotada neste programa consiste em receber do usuário dois pontos, criar um retângulo a partir deles e calcular o negativo deste retângulo.</p>
 </div>
 <div class="paragraph">
-<p>A estratégia adotada neste programa consiste em receber do usuário dois pontos,
-criar um retângulo a partir deles e calcular o negativo deste retângulo.</p>
+<p>As primeiras linhas do programa (linha 21 à linha 61) consiste em validar os  dados fornecidos pelo usuário (se os parâmetros são válidos, se os pontos estão dentro da figura etc.). Uma vez que os dois pontos são válidos, é criado um retângulo (linha 66) e, finalmente, é relizado uma iteração sob todos aqueles pixels representados pelo retângulo dentro da própria matriz <em>image</em> (linha 67 à linha 73), de modo que é calculado o negativo de cada pixel subtraindo seu  valor de 255. Por fim, a imagem processada é exibida na tela.</p>
 </div>
-<div class="paragraph">
-<p>As primeiras linhas do programa (linha 21 à linha 61) consiste em validar os
-dados fornecidos pelo usuário (se os parâmetros são válidos, se os pontos estão
-dentro da figura etc.). Uma vez que os dois pontos são válidos, é criado um
-retângulo (linha 66) e, finalmente, é relizado uma iteração sob todos aqueles
-pixels representados pelo retângulo dentro da própria matriz <em>image</em> (linha 67
-à linha 73), de modo que é calculado o negativo de cada pixel subtraindo seu
-valor de 255. Por fim, a imagem processada é exibida na tela.</p>
-</div>
-<div class="sidebarblock">
+<div class="exampleblock">
 <div class="content">
 <div class="ulist">
 <div class="title">Exemplo de execução</div>
 <ul>
 <li>
-<p>Comando: ./regions cachorro.png 20 20 200 200</p>
+<p>Comando: ./regions onca.png 20 20 200 200</p>
 </li>
 <li>
 <p>Foto de entrada:</p>
 </li>
 </ul>
 </div>
-<div id="img-dog-gray" class="imageblock">
+<div id="img-cachorro" class="imageblock">
 <div class="content">
-<img src="./img/cachorro.png" alt="Regiões" width="200" height="200">
+<img src="./img/onca.png" alt="Regiões" width="300" height="300">
 </div>
-<div class="title">Figure 2. Figura cachorro.png original</div>
+<div class="title">Figura 2. Figura onca.png original</div>
 </div>
 <div class="ulist">
 <ul>
@@ -758,29 +759,226 @@ valor de 255. Por fim, a imagem processada é exibida na tela.</p>
 </li>
 </ul>
 </div>
-<div id="img-dog-gray" class="imageblock">
+<div id="img-onca-regions" class="imageblock">
 <div class="content">
-<img src="./img/cachorro-regioes.png" alt="Regiões" width="200" height="200">
+<img src="./img/onca-regions.png" alt="Regiões" width="300" height="300">
 </div>
-<div class="title">Figure 3. Figura cachorro.png após processamento</div>
+<div class="title">Figura 3. Figura onca.png após processamento</div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_exercício_2">1.2. Exercício 2</h3>
-<div class="stemblock">
+<h3 id="_seção_3_2_exercício_2">1.2. Seção 3.2 - Exercício 2</h3>
+<div class="sidebarblock">
 <div class="content">
-\$a^2 + b^2 = c^2\$
+<div class="paragraph">
+<p>Utilizando o programa <a href="http://agostinhobritojr.github.io/tutoriais/pdi/exemplos/pixels.cpp" target="_blank">exemplos/pixels.cpp</a> como referência, implemente um programa trocaregioes.cpp. Seu programa deverá trocar os quadrantes em diagonal na imagem. Explore o uso da classe Mat e seus construtores para criar as regiões que serão trocadas. O efeito é ilustrado na Figura Troca de regiões (abaixo).</p>
+</div>
+<div id="img-regioes" class="imageblock">
+<div class="content">
+<img src="./img/trocaregioes.png" alt="Troca Regiões" width="200" height="200">
+</div>
+<div class="title">Figura 4. Figura trocaregioes.png</div>
 </div>
 </div>
+</div>
+<div class="paragraph">
+<p>A versão modificada do programa pixels.cpp pode ser vista abaixo:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="cpp"><table class="pyhltable"><tr><td class="linenos"><div class="linenodiv"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65</div></td><td class="code"><span></span><span class="tok-cp">#include</span> <span class="tok-cpf">&lt;iostream&gt;</span><span class="tok-cp"></span>
+<span class="tok-cp">#include</span> <span class="tok-cpf">&lt;opencv2/opencv.hpp&gt;</span><span class="tok-cp"></span>
+
+<span class="tok-k">using</span> <span class="tok-k">namespace</span> <span class="tok-n">cv</span><span class="tok-p">;</span>
+<span class="tok-k">using</span> <span class="tok-k">namespace</span> <span class="tok-n">std</span><span class="tok-p">;</span>
+
+<span class="tok-cm">/*</span>
+<span class="tok-cm"> * argv[1] = imagem</span>
+<span class="tok-cm"> *</span>
+<span class="tok-cm"> *  Esquema dos quadrantes.</span>
+<span class="tok-cm"> *</span>
+<span class="tok-cm"> *    q1  |   q2</span>
+<span class="tok-cm"> *   ____________</span>
+<span class="tok-cm"> *    q3  |   q4</span>
+<span class="tok-cm"> *</span>
+<span class="tok-cm"> */</span>
+
+<span class="tok-kt">int</span> <span class="tok-nf">main</span><span class="tok-p">(</span><span class="tok-kt">int</span> <span class="tok-n">argc</span><span class="tok-p">,</span> <span class="tok-kt">char</span><span class="tok-o">**</span> <span class="tok-n">argv</span><span class="tok-p">)</span>
+<span class="tok-p">{</span>
+    <span class="tok-n">Mat</span> <span class="tok-n">imagem</span><span class="tok-p">,</span> <span class="tok-n">resultado</span><span class="tok-p">,</span> <span class="tok-n">q1</span><span class="tok-p">,</span> <span class="tok-n">q2</span><span class="tok-p">,</span> <span class="tok-n">q3</span><span class="tok-p">,</span> <span class="tok-n">q4</span><span class="tok-p">,</span> <span class="tok-n">temp1</span><span class="tok-p">,</span> <span class="tok-n">temp2</span><span class="tok-p">;</span>
+
+    <span class="tok-cm">/* Verifica o número de argumentos.  */</span>
+    <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-n">argc</span> <span class="tok-o">!=</span> <span class="tok-mi">2</span><span class="tok-p">)</span>
+    <span class="tok-p">{</span>
+        <span class="tok-n">cout</span> <span class="tok-o">&lt;&lt;</span> <span class="tok-s">&quot;A lista de argumentos deve ser: &quot;</span>
+                                            <span class="tok-s">&quot;./trocaregioes &lt;imagem&gt;&quot;</span> <span class="tok-o">&lt;&lt;</span> <span class="tok-n">endl</span><span class="tok-p">;</span>
+        <span class="tok-k">return</span> <span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">;</span>
+    <span class="tok-p">}</span>
+
+    <span class="tok-cm">/* Checa se a imagem pode ser aberta. */</span>
+    <span class="tok-n">imagem</span> <span class="tok-o">=</span> <span class="tok-n">imread</span><span class="tok-p">(</span><span class="tok-n">argv</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">],</span> <span class="tok-n">CV_LOAD_IMAGE_COLOR</span><span class="tok-p">);</span>
+    <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-o">!</span><span class="tok-n">imagem</span><span class="tok-p">.</span><span class="tok-n">data</span><span class="tok-p">)</span>
+    <span class="tok-p">{</span>
+        <span class="tok-n">cout</span> <span class="tok-o">&lt;&lt;</span> <span class="tok-s">&quot;A imagem não pode ser aberta.&quot;</span> <span class="tok-o">&lt;&lt;</span> <span class="tok-n">endl</span><span class="tok-p">;</span>
+        <span class="tok-k">return</span> <span class="tok-o">-</span><span class="tok-mi">2</span><span class="tok-p">;</span>
+    <span class="tok-p">}</span>
+
+    <span class="tok-cm">/* Cria sub-matrizes representando cada quadrante da figura. */</span>
+    <span class="tok-n">q1</span> <span class="tok-o">=</span> <span class="tok-n">Mat</span><span class="tok-p">(</span><span class="tok-n">imagem</span><span class="tok-p">,</span> <span class="tok-n">Rect</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-n">imagem</span><span class="tok-p">.</span><span class="tok-n">cols</span><span class="tok-o">/</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-n">imagem</span><span class="tok-p">.</span><span class="tok-n">rows</span><span class="tok-o">/</span><span class="tok-mi">2</span><span class="tok-p">));</span>
+    <span class="tok-n">q2</span> <span class="tok-o">=</span> <span class="tok-n">Mat</span><span class="tok-p">(</span><span class="tok-n">imagem</span><span class="tok-p">,</span> <span class="tok-n">Rect</span><span class="tok-p">(</span><span class="tok-n">imagem</span><span class="tok-p">.</span><span class="tok-n">rows</span><span class="tok-o">/</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-n">imagem</span><span class="tok-p">.</span><span class="tok-n">cols</span><span class="tok-o">/</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-n">imagem</span><span class="tok-p">.</span><span class="tok-n">rows</span><span class="tok-o">/</span><span class="tok-mi">2</span><span class="tok-p">));</span>
+    <span class="tok-n">q3</span> <span class="tok-o">=</span> <span class="tok-n">Mat</span><span class="tok-p">(</span><span class="tok-n">imagem</span><span class="tok-p">,</span> <span class="tok-n">Rect</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-n">imagem</span><span class="tok-p">.</span><span class="tok-n">cols</span><span class="tok-o">/</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-n">imagem</span><span class="tok-p">.</span><span class="tok-n">cols</span><span class="tok-o">/</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-n">imagem</span><span class="tok-p">.</span><span class="tok-n">rows</span><span class="tok-o">/</span><span class="tok-mi">2</span><span class="tok-p">));</span>
+    <span class="tok-n">q4</span> <span class="tok-o">=</span> <span class="tok-n">Mat</span><span class="tok-p">(</span><span class="tok-n">imagem</span><span class="tok-p">,</span> <span class="tok-n">Rect</span><span class="tok-p">(</span><span class="tok-n">imagem</span><span class="tok-p">.</span><span class="tok-n">rows</span><span class="tok-o">/</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-n">imagem</span><span class="tok-p">.</span><span class="tok-n">cols</span><span class="tok-o">/</span><span class="tok-mi">2</span><span class="tok-p">,</span>
+                <span class="tok-n">imagem</span><span class="tok-p">.</span><span class="tok-n">cols</span><span class="tok-o">/</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-n">imagem</span><span class="tok-p">.</span><span class="tok-n">rows</span><span class="tok-o">/</span><span class="tok-mi">2</span><span class="tok-p">));</span>
+
+    <span class="tok-cm">/* Une os quadrantes q4 e q3 horizontalmente para construir a metade</span>
+<span class="tok-cm">     * superior da imagem. Este resultado parcial é armazenado em temp1.</span>
+<span class="tok-cm">     */</span>
+    <span class="tok-n">hconcat</span><span class="tok-p">(</span><span class="tok-n">q4</span><span class="tok-p">,</span> <span class="tok-n">q3</span><span class="tok-p">,</span> <span class="tok-n">temp1</span><span class="tok-p">);</span>
+
+    <span class="tok-cm">/* Une os quadrantes q2 e q1 horizontalmente para construir a metade</span>
+<span class="tok-cm">     * inferior da imagem. Este resultado parcial é armazenado em temp2.</span>
+<span class="tok-cm">     */</span>
+    <span class="tok-n">hconcat</span><span class="tok-p">(</span><span class="tok-n">q2</span><span class="tok-p">,</span> <span class="tok-n">q1</span><span class="tok-p">,</span> <span class="tok-n">temp2</span><span class="tok-p">);</span>
+
+    <span class="tok-cm">/* Finalmente, une verticialmente os dois resultados parciais anteriores</span>
+<span class="tok-cm">     * para montar o resultado final.</span>
+<span class="tok-cm">     */</span>
+    <span class="tok-n">vconcat</span><span class="tok-p">(</span><span class="tok-n">temp1</span><span class="tok-p">,</span> <span class="tok-n">temp2</span><span class="tok-p">,</span> <span class="tok-n">resultado</span><span class="tok-p">);</span>
+
+    <span class="tok-n">imwrite</span><span class="tok-p">(</span><span class="tok-s">&quot;saida.png&quot;</span><span class="tok-p">,</span> <span class="tok-n">resultado</span><span class="tok-p">);</span>
+    <span class="tok-n">imshow</span><span class="tok-p">(</span><span class="tok-s">&quot;result&quot;</span><span class="tok-p">,</span> <span class="tok-n">resultado</span><span class="tok-p">);</span>
+    <span class="tok-n">waitKey</span><span class="tok-p">(</span><span class="tok-mi">10000</span><span class="tok-p">);</span>
+
+    <span class="tok-k">return</span> <span class="tok-mi">0</span><span class="tok-p">;</span>
+<span class="tok-p">}</span>
+</td></tr></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>O objetivo do programa acima foi criar 4 sub-matrizes representando cada quadrante (representação dos quadrantes da linha 12 à linha 14), para que depois elas pudessem ser concantenadas em uma nova matriz, de modo a representar os quadrantes trocados.</p>
+</div>
+<div class="paragraph">
+<p>A criação das submatrizes ocorrem utilizando o próprio construtor da classe <strong>Mat</strong> (da linha 39 à 42), que permite receber a matriz original e um retângulo representando a ser extraída para criação da nova submatriz. Os retângulos são montados tomando como referência o início, fim e pontos médios horizontais e verticais da matriz original.</p>
+</div>
+<div class="paragraph">
+<p>Com as submatrizes criadas, primeiro são montadas as partes superior e inferior do resultado final (linhas 48 e 53), através da função <strong>hconcat</strong>, que realiza o concatenamento horizontal. Com esses dois resultados intermediários, por fim, é realizado um concatenamento vertical (linha 58), com a função <strong>vconcat</strong>, que produz o resultado final.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<div class="title">Exemplo de execução</div>
+<ul>
+<li>
+<p>Comando: ./trocaregioes onca.png</p>
+</li>
+<li>
+<p>Foto de entrada:</p>
+</li>
+</ul>
+</div>
+<div id="img-onca-1" class="imageblock">
+<div class="content">
+<img src="./img/onca.png" alt="Troca Regioes" width="300" height="300">
+</div>
+<div class="title">Figura 5. Figura onca.png original</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Foto de saída:</p>
+</li>
+</ul>
+</div>
+<div id="img-onca-trocaregioes" class="imageblock">
+<div class="content">
+<img src="./img/onca-trocaregioes.png" alt="Regiões" width="300" height="300">
+</div>
+<div class="title">Figura 6. Figura onca.png após processamento</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_preenchendo_regiões">2. Preenchendo regiões</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_exercício_1">2.1. Exercício 1</h3>
+
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-16 21:50:11 BRT
+Last updated 2017-03-17 13:38:49 BRT
 </div>
 </div>
 <script type="text/x-mathjax-config">
