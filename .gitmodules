@@ -1,0 +1,3 @@
+[submodule "scram-sha-256-generator"]
+	path = scram-sha-256-generator
+	url = https://github.com/DenisMedeiros/scram-sha-256-generator.git
